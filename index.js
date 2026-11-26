@@ -16,7 +16,7 @@ const pool = new Pool({
 app.get('/health', async (req, res) => {
   try {
 
-    console.log("Saludo hola");
+    
     await pool.query('SELECT 1');
     return res.status(200).json({
       service: 'payments',
