@@ -15,6 +15,8 @@ const pool = new Pool({
 
 app.get('/health', async (req, res) => {
   try {
+
+    console.log("Saludo hola");
     await pool.query('SELECT 1');
     return res.status(200).json({
       service: 'payments',
@@ -22,6 +24,7 @@ app.get('/health', async (req, res) => {
       checks: { database: 'ok' },
       timestamp: new Date().toISOString()
     });
+
   } catch (error) {
     console.error('Payments health check database failed:', error.message);
     return res.status(503).json({
